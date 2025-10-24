@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <p>{{ countMessage }}</p>
+    <h2>Count: {{ count }}</h2>
+
+    <div style="display: flex">
+      <button @click="toggleMessage">
+        Click here to toggle the message visibility.
+      </button>
+
+      <!-- use v-if to conditionally render the element, ,adding and removing it from the DOM -->
+      <h3 v-if="showMessage">
+        Shown
+      </h3>
+      <h3 v-else>
+        Hidden
+      </h3>
+    </div>
+
+    <!-- use css toz hide/show the element -->
+    <div v-show="showMessage">
+      This message is toggled using v-show directive.
+    </div>
+
+    <div>
+      <button v-on:click="increaseCount">Increase</button>
+      <button v-on:click="decreaseCount">Decrease</button>
+      <button @click="decreaseCountBy2(2)">Decrease by 2</button>
+    </div>
+
+    <div class="box" @mouseover="handleEvent">Mouse Enter</div>
+    <div class="box" @mouseleave="handleEvent">Mouse Leave</div>
+    <div class="box" @mousemove="handleEventPos">Double Click: {{ x }} - {{ y }}</div>
+
+    <ul>
+      <li v-for="(value, index) in arr" :key="index">
+        {{ value }}: {{ index + 1 }}
+      </li>
+    </ul>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
